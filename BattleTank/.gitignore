@@ -44,6 +44,9 @@
 *.VC.db
 *.VC.opendb
 
+# High resolution maps
+*BattleGround_High.umap
+
 # Precompiled Assets
 SourceArt/**/*.png
 SourceArt/**/*.tga
