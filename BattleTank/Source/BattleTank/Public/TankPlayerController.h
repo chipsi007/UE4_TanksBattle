@@ -26,4 +26,6 @@ private:
 	// Start the tank moving barrel so that a shot would hit where
 	// the crosshair intersect the world
 	void AimTowrdsCrosshair();
+
+	bool GetSightRayHitLocation(FVector& OutHitLocation) const;
 };
