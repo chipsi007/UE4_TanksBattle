@@ -46,6 +46,7 @@
 
 # High resolution maps
 *BattleGround_High.umap
+Content/StarterContent/*
 
 # Precompiled Assets
 SourceArt/**/*.png
