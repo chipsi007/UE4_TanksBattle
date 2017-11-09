@@ -13,8 +13,16 @@ UTankAimingComponent::UTankAimingComponent()
 	// ...
 }
 
+void UTankAimingComponent::SetTurretReference(UTankTurret* TurretToSet)
+{
+	if (!TurretToSet) { return; }
+	Turret = TurretToSet;
+}
+
+
 void UTankAimingComponent::SetBarrelReference(UTankBarrel* BarrelToSet)
 {
+	if (BarrelToSet) { return; }
 	Barrel = BarrelToSet;
 }
 
@@ -55,13 +63,10 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 {
 	// Work-out difference between current barrel rotation, and AimDirection
-	auto BarrelRotator = Barrel->GetForwardVector().Rotation();
+	auto BarrelRotation = Barrel->GetForwardVector().Rotation();
 	auto AimAsRotator = AimDirection.Rotation();
-	auto DeltaRotator = AimAsRotator - BarrelRotator;
+	auto DeltaRotation = AimAsRotator - BarrelRotation;
 
-	Barrel->Elevate(DeltaRotator.Pitch);
-<<<<<<< HEAD
-=======
+	Barrel->Elevate(5);
 	//Turret->Rotate(DeltaRotator.Yaw);
->>>>>>> parent of 884e82f... BT31
 }
