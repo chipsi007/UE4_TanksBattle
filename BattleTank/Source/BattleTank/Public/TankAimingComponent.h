@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-#include "TankTurret.h"
 #include "TankBarrel.h"
 #include "TankAimingComponent.generated.h"
 
@@ -22,14 +21,13 @@ public:
 	// Sets default values for this component's properties
 	UTankAimingComponent();
 
+	// TODO add SetTurretReference
 
 	void AimAt(FVector HitLocation, float LaunchSpeed);
 
-	void SetTurretReference(UTankTurret* TurretToSet);
 	void SetBarrelReference(UTankBarrel* BarrelToSet);
 
 private:
-	UTankTurret* Turret = nullptr;
 	UTankBarrel* Barrel = nullptr;
 
 	void MoveBarrelTowards(FVector AimDirection);
