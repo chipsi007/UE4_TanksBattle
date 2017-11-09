@@ -5,7 +5,6 @@
 #include "CoreMinimal.h"
 #include "TankAimingComponent.h"
 #include "GameFramework/Pawn.h"
-#include "TankTurret.h"
 #include "TankBarrel.h"
 #include "Tank.generated.h"
 
@@ -19,9 +18,6 @@ class BATTLETANK_API ATank : public APawn
 
 public:
 	void AimAt(FVector HitLocation);
-
-	UFUNCTION(BlueprintCallable, Category = Setup)
-		void SetTurretReference(UTankTurret* TurretToSet);
 
 	UFUNCTION(BlueprintCallable, Category = Setup)
 	void SetBarrelReference(UTankBarrel* BarrelToSet);
