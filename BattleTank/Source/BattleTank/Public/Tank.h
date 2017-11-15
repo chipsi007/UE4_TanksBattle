@@ -7,6 +7,7 @@
 #include "GameFramework/Pawn.h"
 #include "TankTurret.h"
 #include "TankBarrel.h"
+#include "Projectile.h"
 #include "Tank.generated.h"
 
 // Forward Declaration
@@ -44,4 +45,11 @@ private:
 
 	UPROPERTY(EditAnywhere, Category = Firing)
 		float LaunchSpeed = 30000; // TODO Find sensible starting default value
+
+	UPROPERTY(EditAnywhere, Category = Setup)
+	// UClass* ProjectileBlueprint;  // Alternative - https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/TSubclassOf/
+	TSubclassOf<AProjectile> ProjectileBlueprint;
+
+	// Local barrel reference for spawning projectile
+	UTankBarrel* Barrel = nullptr;
 };
