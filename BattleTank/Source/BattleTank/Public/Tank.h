@@ -44,7 +44,7 @@ private:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	UPROPERTY(EditAnywhere, Category = Firing)
-		float LaunchSpeed = 30000; // TODO Find sensible starting default value
+		float LaunchSpeed = 5000; // TODO Find sensible starting default value
 
 	UPROPERTY(EditAnywhere, Category = Setup)
 	// UClass* ProjectileBlueprint;  // Alternative - https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/TSubclassOf/
