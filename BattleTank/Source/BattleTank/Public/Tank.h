@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "TankAimingComponent.h"
+#include "TankMovementComponent.h"
 #include "GameFramework/Pawn.h"
 #include "TankTurret.h"
 #include "TankBarrel.h"
@@ -32,6 +33,9 @@ public:
 
 protected:
 	UTankAimingComponent* TankAimingComponent = nullptr;
+
+	UPROPERTY(BlueprintReadOnly)
+	UTankMovementComponent* TankMovementComponent = nullptr;
 
 private:
 	// Sets default values for this pawn's properties
