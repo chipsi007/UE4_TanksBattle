@@ -2,15 +2,15 @@
 
 #include "TankMovementComponent.h"
 
-void UTankMovementComponent::Initialise(UTankTrack* LeftTruckToSet, UTankTrack* RightTruckToSet)
+void UTankMovementComponent::Initialise(UTankTrack* LeftTrackToSet, UTankTrack* RightTrackToSet)
 {
-	if (!LeftTruckToSet || !RightTruckToSet) { return; }
-	LeftTrack = LeftTruckToSet;
-	RightTrack = RightTruckToSet;
+	LeftTrack = LeftTrackToSet;
+	RightTrack = RightTrackToSet;
 }
 
 void UTankMovementComponent::IntendMoveForward(float Throw)
 {
+	if (!LeftTrack || !RightTrack) { return; }
 	LeftTrack->SetThrottle(Throw);
 	RightTrack->SetThrottle(Throw);
 	// TODO prevent double-speed due to dual controle use
@@ -19,6 +19,7 @@ void UTankMovementComponent::IntendMoveForward(float Throw)
 
 void UTankMovementComponent::IntendTurnRight(float Throw)
 {
+	if (!LeftTrack || !RightTrack) { return; }
 	LeftTrack->SetThrottle(Throw);
 	RightTrack->SetThrottle(-Throw);
 	// TODO prevent double-speed due to dual controle use
