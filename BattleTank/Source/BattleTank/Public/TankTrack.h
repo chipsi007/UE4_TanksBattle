@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Components/StaticMeshComponent.h"
+//#include "Components/StaticMeshComponent.h"
 #include "TankTrack.generated.h"
 
 /**
