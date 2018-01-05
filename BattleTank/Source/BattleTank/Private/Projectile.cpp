@@ -9,6 +9,8 @@ AProjectile::AProjectile()
 	PrimaryActorTick.bCanEverTick = true;
 
 	ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(FName("Projectile Movement"));
+	
+	if (!ensure(ProjectileMovement)) { return; }
 	ProjectileMovement->bAutoActivate = false;
 }
 
