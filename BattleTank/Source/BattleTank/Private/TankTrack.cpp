@@ -15,13 +15,13 @@ void UTankTrack::BeginPlay()
 
 	OnComponentHit.AddDynamic(this, &UTankTrack::OnHit);
 
-	CurrentThrottle = 0;
 }
 
 void UTankTrack::OnHit(UPrimitiveComponent*HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit)
 {
 	DriveTrack();
 	ApplySidewaysForce();
+	CurrentThrottle = 0;
 }
 
 void UTankTrack::ApplySidewaysForce()
@@ -33,9 +33,9 @@ void UTankTrack::ApplySidewaysForce()
 	auto DeltaTime = GetWorld()->GetDeltaSeconds();
 	auto CorrectionAcceleration = -SlippageSpeed / DeltaTime * GetRightVector();
 
-	// Calculate and apply sideways for (F = m a)
+	// Calculate and apply sideways (F = m a)
 	auto TankRoot = Cast<UStaticMeshComponent>(GetOwner()->GetRootComponent());
-	auto CorrectionForce = (TankRoot->GetMass() * CorrectionAcceleration) / 2; // Divided because 2 Tracks
+	auto CorrectionForce = (TankRoot->GetMass() * CorrectionAcceleration) / 2; // Two tracks
 	TankRoot->AddForce(CorrectionForce);
 }
 

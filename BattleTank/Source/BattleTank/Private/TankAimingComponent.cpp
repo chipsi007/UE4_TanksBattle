@@ -32,6 +32,11 @@ void UTankAimingComponent::TickComponent(float DeltaTime, enum ELevelTick TickTy
 	FiringState = SetFiringState();
 }
 
+EFiringState UTankAimingComponent::GetFiringState() const
+{
+	return FiringState;
+}
+
 EFiringState UTankAimingComponent::SetFiringState()
 {
 	if ((FPlatformTime::Seconds() - LastFireTime) < ReloadTimeInSeconds) // can change FPlatformTime::Seconds() for 'GetWorld()->GetTimeInSeconds'
@@ -85,6 +90,7 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 	auto AimAsRotator = AimDirection.Rotation();
 	auto DeltaRotator = AimAsRotator - BarrelRotator;
 
+	// Always yaw the shortest way
 	Barrel->Elevate(DeltaRotator.Pitch);
 	if (DeltaRotator.Yaw < 180)
 	{
