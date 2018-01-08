@@ -14,6 +14,8 @@ void UTankTrack::BeginPlay()
 	Super::BeginPlay();
 
 	OnComponentHit.AddDynamic(this, &UTankTrack::OnHit);
+
+	CurrentThrottle = 0;
 }
 
 void UTankTrack::OnHit(UPrimitiveComponent*HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit)
