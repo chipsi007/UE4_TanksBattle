@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 //#include "GameFramework/PlayerController.h"
 #include "TankAimingComponent.h"
+#include "Tank.h"
 #include "TankPlayerController.generated.h" // Must be the last include
 
 /**
@@ -23,6 +24,11 @@ private:
 	void BeginPlay() override;
 	
 	virtual void Tick(float DeltaTime) override;
+
+	void SetPawn(APawn * InPawn);
+
+	UFUNCTION()
+	void OnPossedAITankDeath();
 
 	// Start the tank moving barrel so that a shot would hit where
 	// the crosshair intersect the world

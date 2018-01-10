@@ -15,6 +15,12 @@ ATank::ATank()
 	// TankMovementComponent = CreateDefaultSubobject<UTankMovementComponent>(FName("Movement Component"));
 }
 
+void ATank::BeginPlay()
+{
+	Super::BeginPlay();
+	CurrentHealth = StartingHealth;
+}
+
 float ATank::GetHealthPercent() const
 {
 	return (float)CurrentHealth / (float)StartingHealth;

@@ -28,6 +28,24 @@ void ATankPlayerController::Tick(float DeltaTime)
 	AimTowrdsCrosshair();
 }
 
+void ATankPlayerController::SetPawn(APawn* InPawn)
+{
+	Super::SetPawn(InPawn);
+	if (InPawn)
+	{
+		auto PossessedTank = Cast<ATank>(InPawn); // for OnDeath
+		if (!ensure(PossessedTank)) { return; }
+
+		// Subscribe local method to the tank's death event
+		PossessedTank->OnDeath.AddUniqueDynamic(this, &ATankPlayerController::OnPossedAITankDeath);
+	}
+}
+
+void ATankPlayerController::OnPossedAITankDeath()
+{
+	StartSpectatingOnly();
+}
+
 void ATankPlayerController::AimTowrdsCrosshair()
 {
 	if (!GetPawn()) { return; } // e.g. if not possessing
